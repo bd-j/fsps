@@ -14,6 +14,14 @@ MODULE SPS_VARS
 #define C3K_HR 0
 #endif
 
+#ifndef C3K_NS
+#define C3K_NS 0
+#endif
+
+#ifndef C3K_VS
+#define C3K_VS 0
+#endif
+
 #ifndef MILES
 #define MILES 0
 #endif
@@ -51,7 +59,7 @@ MODULE SPS_VARS
 #ifndef AFE_FLAG
 #define AFE_FLAG 0
 #endif
-  
+
 !------set the dust emission model------!
 #ifndef DL07
 #define DL07 1
@@ -300,11 +308,11 @@ MODULE SPS_VARS
   ! grids are identical
   INTEGER, PARAMETER :: nafeinit=5
   CHARACTER(2), DIMENSION(nafeinit), PARAMETER :: &
-       afe_str_iso=(/'m2','p0','p2','p4','p6'/)
+      afe_str_iso=(/'m2','p0','p2','p4','p6'/)
   CHARACTER(4), DIMENSION(nafeinit), PARAMETER :: &
-       afe_str=(/'-0.2','+0.0','+0.2','+0.4','+0.6'/)
+      afe_str=(/'-0.2','+0.0','+0.2','+0.4','+0.6'/)
   REAL(SP), DIMENSION(nafeinit), PARAMETER     :: &
-       afe_val=(/-0.2,0.0,0.2,0.4,0.6/)
+      afe_val=(/-0.2,0.0,0.2,0.4,0.6/)
   INTEGER, PARAMETER :: afe_sol_indx=2
 #else
   INTEGER, PARAMETER :: nafeinit=1
@@ -312,7 +320,7 @@ MODULE SPS_VARS
   CHARACTER(4), DIMENSION(nafeinit), PARAMETER :: afe_str='+0.0'
   REAL(SP), DIMENSION(nafeinit), PARAMETER     :: afe_val=0.0
   INTEGER, PARAMETER :: afe_sol_indx=1
-#endif  
+#endif
 #elif (C3K_HR)
   REAL(SP), PARAMETER :: zsol_spec = 0.0134
   CHARACTER(7), PARAMETER :: spec_type = 'c3k_hr'
@@ -321,11 +329,53 @@ MODULE SPS_VARS
 #if (AFE_FLAG)
   INTEGER, PARAMETER :: nafeinit=5
   CHARACTER(2), DIMENSION(nafeinit), PARAMETER :: &
-       afe_str_iso=(/'m2','p0','p2','p4','p6'/)
+      afe_str_iso=(/'m2','p0','p2','p4','p6'/)
   CHARACTER(4), DIMENSION(nafeinit), PARAMETER :: &
-       afe_str=(/'-0.2','+0.0','+0.2','+0.4','+0.6'/)
+      afe_str=(/'-0.2','+0.0','+0.2','+0.4','+0.6'/)
   REAL(SP), DIMENSION(nafeinit), PARAMETER     :: &
-       afe_val=(/-0.2,0.0,0.2,0.4,0.6/)
+      afe_val=(/-0.2,0.0,0.2,0.4,0.6/)
+  INTEGER, PARAMETER :: afe_sol_indx=2
+#else
+  INTEGER, PARAMETER :: nafeinit=1
+  CHARACTER(2), DIMENSION(nafeinit), PARAMETER :: afe_str_iso='p0'
+  CHARACTER(4), DIMENSION(nafeinit), PARAMETER :: afe_str='+0.0'
+  REAL(SP), DIMENSION(nafeinit), PARAMETER     :: afe_val=0.0
+  INTEGER, PARAMETER :: afe_sol_indx=1
+#endif
+#elif (C3K_NS)
+  REAL(SP), PARAMETER :: zsol_spec = 0.0134
+  CHARACTER(7), PARAMETER :: spec_type = 'c3k_ns'
+  INTEGER, PARAMETER :: nzinit=13
+  INTEGER, PARAMETER :: nspec=11244
+#if (AFE_FLAG)
+  INTEGER, PARAMETER :: nafeinit=5
+  CHARACTER(2), DIMENSION(nafeinit), PARAMETER :: &
+      afe_str_iso=(/'m2','p0','p2','p4','p6'/)
+  CHARACTER(4), DIMENSION(nafeinit), PARAMETER :: &
+      afe_str=(/'-0.2','+0.0','+0.2','+0.4','+0.6'/)
+  REAL(SP), DIMENSION(nafeinit), PARAMETER     :: &
+      afe_val=(/-0.2,0.0,0.2,0.4,0.6/)
+  INTEGER, PARAMETER :: afe_sol_indx=2
+#else
+  INTEGER, PARAMETER :: nafeinit=1
+  CHARACTER(2), DIMENSION(nafeinit), PARAMETER :: afe_str_iso='p0'
+  CHARACTER(4), DIMENSION(nafeinit), PARAMETER :: afe_str='+0.0'
+  REAL(SP), DIMENSION(nafeinit), PARAMETER     :: afe_val=0.0
+  INTEGER, PARAMETER :: afe_sol_indx=1
+#endif
+#elif (C3K_VS)
+  REAL(SP), PARAMETER :: zsol_spec = 0.0134
+  CHARACTER(7), PARAMETER :: spec_type = 'c3k_vs'
+  INTEGER, PARAMETER :: nzinit=13
+  INTEGER, PARAMETER :: nspec=9710
+#if (AFE_FLAG)
+  INTEGER, PARAMETER :: nafeinit=5
+  CHARACTER(2), DIMENSION(nafeinit), PARAMETER :: &
+      afe_str_iso=(/'m2','p0','p2','p4','p6'/)
+  CHARACTER(4), DIMENSION(nafeinit), PARAMETER :: &
+      afe_str=(/'-0.2','+0.0','+0.2','+0.4','+0.6'/)
+  REAL(SP), DIMENSION(nafeinit), PARAMETER     :: &
+      afe_val=(/-0.2,0.0,0.2,0.4,0.6/)
   INTEGER, PARAMETER :: afe_sol_indx=2
 #else
   INTEGER, PARAMETER :: nafeinit=1

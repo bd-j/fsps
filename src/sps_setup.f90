@@ -61,6 +61,7 @@ SUBROUTINE SPS_SETUP(zin)
   !---------------------------------------------------------------!
   !---------------------------------------------------------------!
 
+  ! write(*,*) spec_type, nspec, nzinit, ndim_logt, ndim_logg
 
   allocate(speclibinit(nspec,nzinit,nafeinit,ndim_logt,ndim_logg))
   speclibinit=0.
@@ -222,11 +223,11 @@ SUBROUTINE SPS_SETUP(zin)
      OPEN(94,FILE=TRIM(SPS_HOME)//'/SPECTRA/MILES/miles.res',&
           STATUS='OLD',iostat=stat,ACTION='READ')
   ELSE IF (spec_type(1:3).EQ.'c3k') THEN
-     OPEN(91,FILE=TRIM(SPS_HOME)//'/SPECTRA/C3K/'//TRIM(spec_type)//'.lambda',&
+     OPEN(91,FILE=TRIM(SPS_HOME)//'/SPECTRA/C3K/'//TRIM(spec_type)//'/'//TRIM(spec_type)//'.lambda',&
           STATUS='OLD',iostat=stat,ACTION='READ')
-     OPEN(93,FILE=TRIM(SPS_HOME)//'/SPECTRA/C3K/'//TRIM(spec_type)//'_zlegend.dat',&
+     OPEN(93,FILE=TRIM(SPS_HOME)//'/SPECTRA/C3K/'//TRIM(spec_type)//'/'//TRIM(spec_type)//'_zlegend.dat',&
           STATUS='OLD',iostat=stat,ACTION='READ')
-     OPEN(94,FILE=TRIM(SPS_HOME)//'/SPECTRA/C3K/'//TRIM(spec_type)//'.res',&
+     OPEN(94,FILE=TRIM(SPS_HOME)//'/SPECTRA/C3K/'//TRIM(spec_type)//'/'//TRIM(spec_type)//'.res',&
           STATUS='OLD',iostat=stat,ACTION='READ')
   ENDIF
   IF (stat.NE.0) THEN
@@ -285,7 +286,7 @@ SUBROUTINE SPS_SETUP(zin)
                 STATUS='OLD',iostat=stat,ACTION='READ',access='direct',&
                 recl=nspec*ndim_logg*ndim_logt*4)
         ELSE IF (spec_type(1:3).EQ.'c3k') THEN
-           OPEN(92,FILE=TRIM(SPS_HOME)//'/SPECTRA/C3K/'//TRIM(spec_type)//&
+           OPEN(92,FILE=TRIM(SPS_HOME)//'/SPECTRA/C3K/'//TRIM(spec_type)//'/'//TRIM(spec_type)//&
                 '_feh'//zlegend_str2(z)//'_afe'//afe_str(aa)//'.spec.bin',&
                 FORM='UNFORMATTED',&
                 STATUS='OLD',iostat=stat,ACTION='READ',access='direct',&

@@ -986,7 +986,8 @@ SUBROUTINE SPS_SETUP(zin)
         dlam = spec_lambda(j+1)-spec_lambda(j) ! pixel size in AA
         ! minimum sigma corresponds to 2 pixels per fwhm (i.e. 2/2.35 pixels per sigma)
         dlam = dlam*2/2.355*nebular_smooth_factor
-        neb_res_min(i) = max(dlam, nebem_line_pos(i) * ABS(spec_res(i))/clight*1E13)
+        neb_res_min(i) = max(dlam, nebem_line_pos(i) * ABS(spec_res(j))/clight*1E13)
+        !write(*, *) i, dlam, neb_res_min(i), spec_res(j)
      ENDDO
 
      !set up a "master" array of normalized Gaussians

@@ -367,7 +367,7 @@ MODULE SPS_VARS
   REAL(SP), PARAMETER :: zsol_spec = 0.0134
   CHARACTER(7), PARAMETER :: spec_type = 'c3k_vs'
   INTEGER, PARAMETER :: nzinit=13
-  INTEGER, PARAMETER :: nspec=9710
+  INTEGER, PARAMETER :: nspec=43778
 #if (AFE_FLAG)
   INTEGER, PARAMETER :: nafeinit=5
   CHARACTER(2), DIMENSION(nafeinit), PARAMETER :: &
